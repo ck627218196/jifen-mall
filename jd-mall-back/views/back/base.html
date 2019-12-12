@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>积点商城后台管理系统</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="node_modules/nprogress/nprogress.css">
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+        body{
+            /*background: url("./uploads/03.jpg") no-repeat;*/
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-image:url('./uploads/02.jpg');
+            background-attachment:fixed;
+            background-position:100% 100%;
+            background-repeat:no-repeat;
+        }
+    </style>
+    <!--留出插槽-用于放置头部引入的代码-->
+    {% block style %}
+    {% endblock %}
+</head>
+<body>
+
+<!--嵌入头部-->
+{% include "back/header.html" %}
+
+<!-- 主体 -->
+<div class="main">
+    <!--嵌入头部-->
+    {% include "back/aside.html" %}
+
+    <!--留出插槽-用于放置中间变化的内容-->
+    {% block content %}
+    {% endblock %}
+</div>
+
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="node_modules/nprogress/nprogress.js"></script>
+<script src="node_modules/echarts/dist/echarts.js"></script>
+<script src="js/base.js"></script>
+<!--留出插槽-用于放置脚本-->
+{% block script %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>404页面</title>
+<link href="/css/new-web-css/web_common.css" rel="stylesheet" media="all" />
+<link href="/css/new-web-css/new_index.css" rel="stylesheet" media="all" />
+<script type="text/javascript" src="/Scripts/jquery-1.7.2.min.js"></script>
+<script src="/Scripts/artDialog/artDialog.source.js?skin=simple"></script>
+<script src="/Scripts/header.js"></script>
+<script type="text/javascript" src="/Scripts/new_top.js"></script> 
+<!--头部导航js-->
+</head>
+<body>
+<!--头部-->
+<div style="display:none">
+{literal}
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?8ad8b953240aabb3482ed019bc2ba0a2";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+{/literal}
+</div>
+<div id="web-headbar">
+	<div class="web-head">
+		<div class="mobile-app">
+			<div class="app_l" onmouseover="qr_show(this)" onmouseout="qr_hide(this)">
+				<a href="javascript:void(0)" class="app">幼禾云课堂APP</a>
+				<div class="app-box app-box01" style="display:none">
+					<div class="app-er">
+						<p>欢迎扫描下载！</p>
+						<div class="app_more">
+							<a href="https://itunes.apple.com/cn/app/%E5%B9%BC%E7%A6%BE%E4%BA%91%E8%AF%BE%E5%A0%82-%E5%B9%BC%E5%84%BF%E6%95%99%E5%B8%88%E7%9A%84%E5%9C%A8%E7%BA%BF%E5%AD%A6%E4%B9%A0%E4%BA%A4%E6%B5%81%E5%B9%B3%E5%8F%B0/id1250696085?mt=8" class="m_iphone" target="_blank">iphone</a>
+							<a href="http://www.chinaxueqian.com/download/app/yhykt_for_android.apk " class="m_and" target="_blank">Android</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="app_r" onmouseover="qr_show(this)" onmouseout="qr_hide(this)">
+				<a href="javascript:void(0)" class="weixin">幼教家园微信</a>
+				<div class="app-box weixin-box" style="display:none">
+					<p>扫一扫，关注我吧！</p>
+					<div class="weixin-er"><a href="http://www.chinaxueqian.com/html/theme/weChat/weixin.shtml" target="_blank"></a></div>
+					<span>chinaxueqian</span>
+				</div>
+			</div>
+			<!--<a href="http://hubei.chinaxueqian.com" class="back_pt" target="_blank" >湖北站</a>-->
+		</div>
+		
+		<script type="text/javascript" src="http://account.chinaxueqian.com/Auth/UTop/"></script>
+	</div>
+</div>
+
+<script src="/Scripts/artDialog/artDialog.source.js?skin=simple"></script>
+<script src="/Scripts/header.js?v=3.0"></script>
+<script type="text/javascript" src="/Scripts/new_top.js"></script>  <!--头部导航js-->
+	
+<!--头部end-->
+<!--logo-->
+<div id="headerbar">
+<div class="clearfix" id="header">
+  <div class="logo">
+    <a class="logo-img" href="/">幼教综合服务平台</a>
+  </div>
+  <div class="logo-line"></div>
+  <div class="web-slogan"></div>
+  <div class="nav">
+  	<ul class="nav-list clearfix">
+		<li><a href="/"  id="sort1107" >首页</a></li>
+		<li class="line">|</li>
+		<li><a href="/shtml/info.shtml" id="sort1074">资讯聚焦</a></li>
+		<li class="line">|</li>
+		<li><a href="/shtml/train/train.shtml" id="sort1108">师资培训</a></li>
+		<li class="line">|</li>
+		<!--<li><a  onclick="authLogin();return false;" href="javascript:void(0);" id="sort1109">幼教资源</a></li>-->
+		<li><a  href="http://ziyuan.chinaxueqian.com" target="_blank" id="sort1109">幼教资源</a></li>
+		<li class="line">|</li>
+		<li><a href="/shtml/nursery/nursery.shtml" id="sort1080">园所之家</a></li>
+		<li class="line">|</li>
+		<li class="last-li"><a href="/shtml/parentsschool/school.shtml" id="sort1086">家长学校</a></li>
+	</ul>
+  </div>
+</div>
+</div>
+<!--logo end-->
+<!--主体部分开始-->
+
+<div class="content content01 page_undefined clearfix">
+	<div class="mainbox">
+		<div class="page_none clearfix">
+			<h2>很抱歉！</h2>
+			<h3>您访问的页面灰走了...</h3>
+			<p><a href="/">返回首页</a><a href="/">返回上一页</a></p>
+			<div class="art_404 clearfix">
+				<div class="a_404 art_l_404 fl">
+					<h3 class="tit clearfix">精彩推荐</h3>
+					<ul class="clearifx">
+					 
+												<li><a href="http://www.chinaxueqian.com/shtml/information/2018-03-19/1521426194d38604.shtml" title="教育部长陈宝生谈学前教育 | 两会记者会" target="_blank">教育部长陈宝生谈学前教育</a></li>
+												<li><a href="http://www.chinaxueqian.com/shtml/information/2018-03-12/1520827477d38600.shtml" title="幼师，这些两会信息与你息息相关!" target="_blank">幼师，这些两会信息与你息息相关!</a></li>
+												<li><a href="http://www.chinaxueqian.com/shtml/information/2018-03-19/1521427432d38606.shtml" title="干货 | 春季，我们的幼儿园就该春暖花开" target="_blank">春季，我们的幼儿园就该春暖花开</a></li>
+												<li><a href="http://www.chinaxueqian.com/shtml/information/2018-03-19/1521437167d38608.shtml" title="“春捂”怎么捂?这份春季穿衣指南送给家长" target="_blank">“春捂”怎么捂?春季穿衣指南送给家长</a></li>
+												<li><a href="http://www.chinaxueqian.com/shtml/information/2018-03-19/1521428890d38607.shtml" title="“春咳”高发季，请保护好我们的孩子!(转给家长)" target="_blank">“春咳”高发季，请保护好我们的孩子!</a></li>
+											</ul>
+				</div>
+				<div class="a_404 art_r_404 fr">
+					<h3 class="tit clearfix">幼儿教育</h3>
+					<ul class="clearifx">
+						 
+												<li><a href="http://www.chinaxueqian.com/shtml/parentsschool/2018-03-30/1522397986d38815.shtml" title="打造自信宝宝的28个方法，非常有效！" target="_blank">打造自信宝宝的28个方法</a></li>
+												<li><a href="http://www.chinaxueqian.com/shtml/parentsschool/2018-03-30/1522396907d38813.shtml" title="幼儿心理健康的5个重要标准，发现异常请及时矫正!" target="_blank">幼儿心理健康的5个重要标准</a></li>
+												<li><a href="http://www.chinaxueqian.com/shtml/parentsschool/2018-03-30/1522397394d38814.shtml" title="孩子老是沉迷在手机里?教你7招把孩子“抢”回来!" target="_blank">7招让孩子不再沉迷手机</a></li>
+												<li><a href="http://www.chinaxueqian.com/shtml/parentsschool/2018-03-30/1522396661d38812.shtml" title="为什么孩子总是不守规矩? 可能是你用错了方式" target="_blank">为什么孩子总是不守规矩</a></li>
+												<li><a href="http://www.chinaxueqian.com/shtml/parentsschool/2018-01-24/1516787015d38535.shtml" title="冬天拾一把干树枝，这样装饰，比鲜花还美" target="_blank">冬天拾一把干树枝，这样装饰</a></li>
+											</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--主体部分开始 end-->
+
+
+<!--链接-->
+
+<!--右功能按钮分享客服回到顶部-->
+<div id="rig_box">
+    <div class="edu-widgets">  
+    
+       <div class="service" >
+           <a title="在线客服" id="advice">
+				<a onclick="return openJesongChat(2760,'2760');" title="在线客服">
+                	<i class="tab-ico"></i>
+                    <em class="tab-text">联系客服</em>
+                </a>
+			</a> 
+        </div>
+        <div class="g-top" title="返回顶部" style="margin-top:1px">
+            <a href="#" title="返回顶部">
+            	<i class="tab-ico"></i>
+                <em class="tab-text">回到顶部</em>
+            </a>
+        </div> 
+    </div>
+ <div style="display:none;">
+{literal}
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":["mshare","weixin","tsina","tqq","qzone","sqq","copy","print"],"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"0","bdPos":"right","bdTop":"130"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];$(window).ready(function(){$('#rig_box div a').mouseenter(function(){$(this).find('em.tab-text').css("background-color","#ff7200").animate({"left":"-61px"},"fast");$(this).find('i.tab-ico').css("background-color","#ff7200")});	$('#rig_box div a').mouseleave(function(){$(this).find('em.tab-text').css("background-color","#7a6e6e").animate({"left":"35px"},"fast");$(this).find('i.tab-ico').css("background-color","#7a6e6e");});})
+</script>
+{/literal}
+</div>
+<!--右功能按钮结束-->
+</div>
+<script type="text/javascript" charset="UTF-8" src="http://live.jswebcall.com:80/skin.jsp?comp=2001&config=3002"></script>
+<script type="text/javascript" charset="UTF-8" src="http://www.chinaxueqian.com/Scripts/yiliaotong/yiliaotong.js"></script>		  	
+
+
+<div class="content in_link clearfix">
+	<div class="mainbox clearfix">
+		<div class="ml_box link_index_l">
+			<ul class="ul_list clearfix">
+				<li><h3>资讯聚焦</h3></li>
+				<li><a href="/shtml/information/index_1075.shtml" target="_blank">国际资讯</a></li>
+				<li><a href="/shtml/information/index_1076.shtml" target="_blank">培训动态</a></li>
+				<li><a href="/shtml/information/index_1077.shtml" target="_blank">幼教新闻</a></li>
+				<li><a href="/shtml/information/index_1078.shtml" target="_blank">幼儿园动态</a></li>
+				<li><a href="/shtml/information/index_1079.shtml" target="_blank">家园互动</a></li>
+			</ul>
+			<ul class="ul_list clearfix">
+				<li><h3>师资培训</h3></li>
+				<li><a href="http://www.chinaxueqian.com/shtml/train/train.shtml" target="_blank">国培项目</a></li>
+				<li><a href="http://www.chinaxueqian.com/shtml/train/train.shtml" target="_blank">区域培训</a></li>
+				<li><a href="http://www.chinaxueqian.com/shtml/train/train.shtml" target="_blank">专项培训</a></li>
+				<li><a href="http://www.chinaxueqian.com/shtml/train/train.shtml" target="_blank">权威专家</a></li>
+				<li><a href="http://www.chinaxueqian.com/shtml/train/train.shtml" target="_blank">教师培训专题</a></li>
+				<li><a href="http://www.chinaxueqian.com/shtml/train/train.shtml" target="_blank">《幼儿教师教育》</a></li>
+				
+			</ul>
+			<ul class="ul_list clearfix">
+				<li><h3>幼教资源</h3></li>
+				<li><a target="_blank" href="http://ziyuan.chinaxueqian.com/resource/list?a=&d=1&cid=1">教学资源</a></li>
+				<li><a target="_blank" href="http://ziyuan.chinaxueqian.com/resource/list?a=&d=1&cid=43">培训资源</a></li>
+				<li><a target="_blank" href="http://ziyuan.chinaxueqian.com/resource/list?a=&d=1&cid=50">园务资源</a></li>
+				<li><a target="_blank" href="http://ziyuan.chinaxueqian.com/resource/list?a=&d=1&cid=56">教研资源</a></li>
+				<li><a target="_blank" href="http://ziyuan.chinaxueqian.com/resource/list?a=&d=1&cid=62">育儿资源</a></li>
+				<li><a target="_blank" href="http://ziyuan.chinaxueqian.com/resource/list?a=&d=1&cid=67">家园共育</a></li>
+				
+				
+			</ul>
+			<ul class="ul_list clearfix">
+				<li><h3>园所之家</h3></li>
+				<li><a href="http://www.chinaxueqian.com/NSearch.php" target="_blank">幼儿园搜索</a></li>
+				<li><a href="http://www.chinaxueqian.com/shtml/nursery/nursery.shtml" target="_blank">名园展示</a></li>
+				<li><a href="http://www.chinaxueqian.com/shtml/nursery/nursery.shtml" target="_blank">明星园长</a></li>
+				<li><a href="http://www.chinaxueqian.com/shtml/nursery/720nursery.shtml" target="_blank">720全景</a></li>
+				<li><a href="http://www.chinaxueqian.com/shtml/nursery/nursery.shtml" target="_blank">园所活动</a></li>
+				<li><a href="http://www.chinaxueqian.com/shtml/nursery/nursery.shtml" target="_blank">宝宝作品秀</a></li>
+			</ul>
+			<ul class="ul_list clearfix">
+				<li><h3>家长学校</h3></li>
+				<li><a href="http://www.chinaxueqian.com/shtml/parentsschool/index_1091.shtml" target="_blank">成长指标</a></li>
+				<li><a href="http://www.chinaxueqian.com/shtml/parentsschool/index_1092.shtml" target="_blank">疾病预防</a></li>
+				<li><a href="http://www.chinaxueqian.com/shtml/parentsschool/index_1088.shtml" target="_blank">幼儿教育</a></li>
+				<li><a href="http://www.chinaxueqian.com/Home/mark.php" target="_blank">宝宝成长档案</a></li>
+				<li><a href="http://www.chinaxueqian.com/shtml/parentsschool/index_1089.shtml" target="_blank">幼升小</a></li>
+				<li><a href="http://www.chinaxueqian.com/shtml/parentsschool/school.shtml" target="_blank">名人教子</a></li>
+			</ul>
+			<ul class="ul_list ul_last clearfix">
+				<li><h3>关于我们</h3></li>
+				<li><a href="http://www.chinaxueqian.com/intro/youhe/yhintro.shtml" target="_blank">平台简介</a></li>
+				<li><a href="http://www.chinaxueqian.com/intro/youhe/about_us.shtml" target="_blank">联系我们</a></li>
+				<li><a href="http://www.chinaxueqian.com/intro/FBack.php" target="_blank">平台反馈</a></li>
+				<li><a href="http://www.chinaxueqian.com/intro/youhe/copyright.shtml" target="_blank">版权说明</a></li>
+				<!--<li><a href="#" target="_blank">帮助中心</a></li>-->
+				<li><a href="http://www.chinaxueqian.com/intro/youhe/privacy.shtml" target="_blank">隐私声明</a></li>
+				<li><a href="http://www.chinaxueqian.com/intro/youhe/recruitment.shtml" target="_blank">网站招聘</a></li>
+			</ul>
+		</div>
+		<div class="mr_box link_index_r">
+			<dl class="app clearfix">
+				<dt><img src="http://img.chinaxueqian.com/www/web-common/footer_app.jpg" width="91" height="91" /></dt>
+				<dd>
+					<h3>幼禾云课堂APP</h3>
+					<p>幼儿教师的在线学习交流平台</p>
+				</dd>
+			</dl>
+			<dl class="weixin clearfix">
+				<dt><img src="http://img.chinaxueqian.com/www/web-common/footer_weixin.jpg" width="91" height="91" /></dt>
+				<dd>
+					<h3>幼教家园微信</h3>
+					<p>家园互动移动互联网时代</p>
+				</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<!--链接-->
+<!--底部-->
+<div id="footerbar">
+	<div class="footer">
+		<p class="copy_right">Copyright 2012 - 2018 chinaxueqian.com All Rights Reserved&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;京ICP备12020683号-2  京公网安备11010802009962</p>
+		<p class="contact">邮箱:webmaster@chinaxueqian.com&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;客服电话(7*24):010-68908368,68908168 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+	</div>
+</div>
+<script src="/Scripts/delCookieType.js"></script>
+<div style="display:none">
+{literal}
+<script type="text/javascript">
+//事件 start _hmt.push(['_trackEvent', category, action, opt_label, opt_value]);
+var currentTitle = document.title;
+if(typeof(CurrentNid) != "undefined")
+{
+	var NurseryName = jQuery.trim(jQuery('#nurseryName').html());
+	//var CurrentNid = '';
+	var CurrentViewMsg = NurseryName+'('+CurrentNid+')';
+	_hmt.push(['_trackEvent', CurrentViewMsg, '浏览', window.location.href]);
+}
+//事件 end
+</script>
+{/literal}
+</div>
+<!--Topbar--> 
+<!--[if lte IE 6]>
+<script type="text/javascript" src="/Scripts/DD_belatedPNG_0.0.8a.js"></script>
+<script type="text/javascript">
+	DD_belatedPNG.fix('.sec_px_tip,#focus .preNext,.feed_box dl .tools_span i,.yszj_index_l .tit .add_platform,.sec_pxr_one h3,.three_l .title_name,.share_box a,.sec_xqzd_one #focus .preNext,.r_link .search_box .closed,.myzs_tit a.Establish,.sec_jzxxr_one .tit em,.sec_jzxxr_one dt,.video_cata .tit,.video_cata .con h3 em,.search_area .search_r .search_btn,.video_list li p span em,.video_tit .share_num span em,.bLogin .bBox_l .tit a,.bLogin .bBox_l .tit a:hover,.bLogin .bBox_l ul li .texttip i,.exp_red_mask,.bLogin .bBox_l ul li.textform,.bLogin .bBox_l ul li.verify,.red_mask,.show_box li .mask_hover,.green_mask,.video_list li a.video_img .mask_hover,.yejy_r #focus li a .mask_hover,.m-banner .txt_info h3,.logo-img,.logo_top .logo_l a,.img_con .img_mask')
+</script>
+<![endif]--> 
+<!--Topbar-->
+<!--底部end-->
+
+</body>
+</html>

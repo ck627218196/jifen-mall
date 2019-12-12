@@ -1,0 +1,80 @@
+<!-- 管理系统头部 -->
+<div class="header">
+    <nav class="navbar navbar-custom">
+        <div class="navbar-header">
+            <a href="javascript:;" class="navbar-brand">积点商城后台管理系统</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li style="display: flex">
+                <a href="/back/reset_pwd"><i class="fa fa-users"></i><strong>修改密码</strong></a>
+                <a href="javascript:;" class="logout"><i class="fa fa-sign-out"></i><strong>退出</strong></a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<!--<div class="modal fade" id="docentModal">
+    <div class="modal-dialog" style="width: 750px;">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="panel-title">管理员信息</h4>
+            </div>
+            &lt;!&ndash;<div class="panel-body">
+                <table class="table table-bordered table-condensed">
+                    <tbody>
+                    <tr>
+                        <th>姓名:</th><td>杨莉</td>
+                        <th>职位:</th><td colspan="3">管理员</td>
+                        <td rowspan="4" width="128">
+                            <div class="avatar">
+                                <img src="/back/images/favicon.ico" alt="">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>用户名:</th><td  colspan="4">yang</td>
+                    </tr>
+                    <tr>
+                        <th>性别:</th><td>女</td>
+                        <th>出生日期:</th><td colspan="3">1991-12-27</td>
+                    </tr>
+                    <tr>
+                        <th>手机号码:</th><td colspan="2">15639302198</td>
+                        <th>邮箱:</th><td colspan="2">1049705766@qq.com</td>
+                    </tr>
+                    <tr>
+                        <th colspan="7">管理员介绍:</th>
+                    </tr>
+                    <tr>
+                        <td colspan="7">
+                            <div class="introduce">
+                                <p>积分商城商品管理及用户人员管理</p>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>&ndash;&gt;
+        </div>
+    </div>
+</div>-->
+
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="js/tool.js"></script>
+<script>
+    $(function () {
+        $('.logout').click(function () {
+             // 退出登录
+             $.ajax({
+                url: SERVER + '/cms/api/auth/user/logout',
+                success: function (result) {
+                    if(result.status === 1){
+                        window.location.href = '/back/login';
+                    }else {
+                        alert('退出登录失败!');
+                    }
+                }
+             });
+        });
+    })
+</script>

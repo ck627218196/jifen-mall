@@ -1,0 +1,175 @@
+{% extends "back/base.html" %}
+
+{% block style %}
+    <style>
+    .preview {
+        width: 500px;
+        height: 90px;
+        padding: 0;
+        margin-left: 15px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .preview:hover .cover {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .preview:hover .fa-upload {
+        color: rgba(240, 240, 240, 0.8);
+    }
+
+    #upfile {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 9;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }
+
+    .cover {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        line-height: 90px;
+        font-size: 40px;
+        background-color: rgba(0, 0, 0, 0);
+        transition: all 0.3s;
+    }
+
+    .fa-upload {
+        color: rgba(240, 240, 240, 0);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+    <div class="body advert">
+        <!-- 面包屑 -->
+        <ol class="breadcrumb">
+            <li><a href="/back/sowing_list">轮播图列表</a></li>
+            <li class="active">修改轮播图</li>
+        </ol>
+        <div class="advert-add">
+            <form id="sowing_form" action="/cms/api/auth/sowing/edit" method="post" class="form-horizontal" enctype="multipart/form-data">
+                <div class="form-group">
+                    <!--隐式提交: type="hidden" -->
+                    <div class="col-md-5">
+                        <input name="id" value="{{sowingData.id}}" type="hidden">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="sowing_title" class="col-md-3 control-label">图片标题</label>
+                    <div class="col-md-5">
+                        <input id="sowing_title" name="sowing_title" value="{{sowingData.sowing_title}}" type="text" class="form-control input-sm" placeholder="请填写图片标题" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">请上传图片</label>
+                    <div class="col-md-2 preview">
+                        <img data-sowing-image="{{sowingData.sowing_img}}" id="image_url" src="/upload/image/{{sowingData.sowing_img}}" style="border: 1px solid #e0e0e0;">
+                        <input name="sowing_image" type="file" id="upfile">
+                        <div class="cover">
+                            <i class="fa fa-upload"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="sowing_link" class="col-md-3 control-label">跳转链接</label>
+                    <div class="col-md-5">
+                        <input id="sowing_link" name="sowing_link" value="{{sowingData.sowing_link}}" type="text" class="form-control input-sm" placeholder="请填写跳转链接" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-md-3 control-label">是否上架</label>
+                    <div class="col-md-5">
+                        <label class="checkbox-inline">
+                            {% if sowingData.sowing_show === 1 %}
+                              <input name="sowing_show" type="radio" value="1" checked> 是
+                            {% else %}
+                              <input name="sowing_show" type="radio" value="1" > 是
+                            {% endif%}
+                        </label>
+                        <label class="checkbox-inline">
+                            {% if sowingData.sowing_show === 0 %}
+                                <input name="sowing_show" type="radio" value="0" checked> 否
+                            {% else %}
+                                <input name="sowing_show" type="radio" value="0" > 否
+                            {% endif%}
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <input type="submit" class="btn btn-danger btn-sm pull-right" value="修改轮播图">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    $(function () {
+        // 1. 处理图片的本地展示
+        $('#upfile').on('change', function () {
+            // 1.1 取出本地的文件
+            let imgFile = this.files[0];
+            // 1.2 文件阅读对象
+            let fileReader = new FileReader();
+            fileReader.readAsDataURL(imgFile);
+            // 1.3 文件读取完毕
+            fileReader.onloadend = function () {
+                $('#image_url').attr('src', this.result);
+            }
+        });
+
+
+        // 2. 发起POST请求
+        $('#sowing_form').submit(function () {
+            // 2.1 创建FormData对象
+            let formData = new FormData(this);
+
+            // 2.2 容错验证
+            if(formData.get('sowing_image').size === 0){
+                let sowing_image = $('#image_url').data('sowing-image');
+                formData.set('sowing_image', sowing_image);
+            }
+
+            /*console.log(formData.get('sowing_title'));
+            console.log(formData.get('sowing_image'));
+            console.log(formData.get('sowing_show'));
+            console.log(formData.get('sowing_link'));*/
+
+            // 2.3 发起请求
+             $.ajax({
+                url:  $(this).attr('action'),
+                type: $(this).attr('method'),
+                processData: false, // 不要处理转化成一个查询字符串
+                contentType: false,
+                data: formData,
+                success: function (result) {
+                    if(result.status === 1){
+                        alert('修改轮播图成功!');
+                        // 返回上一级界面
+                        window.location.href = '/back/sowing_list';
+                    }else {
+                        alert('修改轮播图失败!');
+                    }
+                }
+             });
+            // 阻止默认提交
+           return false;
+        });
+    });
+</script>
+{% endblock %}
+

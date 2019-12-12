@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>引擎-通用型后台管理系统</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="node_modules/nprogress/nprogress.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<!-- 管理系统头部 -->
+<div class="header">
+    <nav class="navbar navbar-custom">
+        <div class="navbar-header">
+            <a href="javascript:;" class="navbar-brand">引擎计划-通用型后台管理系统</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="javascript:;"><i class="fa fa-sign-out"></i>退出</a></li>
+        </ul>
+    </nav>
+</div>
+<!-- 主体 -->
+<div class="main">
+    <!-- 侧边栏 -->
+    <div class="aside">
+        <!-- 个人资料 -->
+        <div class="profile">
+            <!-- 头像 -->
+            <div class="avatar img-circle">
+                <img src="./uploads/avatar.png" alt="">
+            </div>
+            <h4>旋之华</h4>
+        </div>
+        <!-- 导航菜单 -->
+        <div class="navs">
+            <ul class="list-unstyled">
+                <li>
+                    <a href="/back" class="active">
+                        <i class="fa fa-area-chart"></i>
+                        首页
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <i class="fa fa-object-group"></i>
+                        幼教资源
+                        <i class="arrow fa fa-angle-right"></i>
+                    </a>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="/back/sowing_list">
+                                轮播图列表
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/back/source_list">
+                                资源列表
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/back/order_list">
+                        <i class="fa fa-users"></i>
+                        管理员列表
+                    </a>
+                </li>
+                <li>
+                    <a href="/back/user">
+                        <i class="fa fa-cog"></i>
+                        用户中心
+                        <!--<i class="arrow fa fa-angle-right"></i>-->
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <!-- 管理员资料 -->
+        <div class="body teacher-profile">
+            <div class="settings text-center">
+                <img src="images/xiaoliao.png" alt="" style="width: 250px; display: inline-block;">
+                <h4>本系统为幼教后台管理系统1.0.0版本</h4>
+                <h4>开发团队: 引擎计划-项目组</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="node_modules/nprogress/nprogress.js"></script>
+<script src="js/base.js"></script>
+</body>
+</html>

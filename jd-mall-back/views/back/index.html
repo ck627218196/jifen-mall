@@ -1,0 +1,103 @@
+{% extends "back/base.html" %}
+
+{% block style %}
+    <style>
+        .main .body a{text-decoration: none; color: #fff;text-align: center;}
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div>
+            <p style="display: flex">
+                <span><img src="./uploads/logo.png" alt="" style="width: 28px;height: 28px;"></span>
+                <span style="margin-left: 10px">积点商城后台管理系统&gt;</span>
+                <span style="color: orangered">激励计划明细</span>
+            </p>
+        </div>
+        <div class="panel panel-default">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                    <th>归属子体系</th>
+                    <th>激励计划名称</th>
+                    <th>兑现方式</th>
+                    <th>对应项目</th>
+                    <th>是否可选</th>
+                    <th>消费上限</th>
+                    <th>消费下限</th>
+                </tr>
+                </thead>
+                <tbody class="user-list">
+                <tr >
+                    <td  rowspan="4">福利激励</td>
+                    <td>扶贫计划</td>
+                    <td >实物  </td>
+                    <td>扶贫商城</td>
+                    <td>可选</td>
+                    <td>1000.00</td>
+                    <td>0.00</td>
+                </tr>
+                <tr >
+                    <td>年节慰问计划</td>
+                    <td >实物  </td>
+                    <td>米面粮油</td>
+                    <td>可选</td>
+                    <td>1000.00</td>
+                    <td>0.00</td>
+                </tr>
+                <tr >
+                    <td>“三防”计划</td>
+                    <td >实物  </td>
+                    <td>家居、厨具、家用电器、个护化妆、营养保健、服饰、内衣、鞋靴</td>
+                    <td>可选</td>
+                    <td>1000.00</td>
+                    <td>0.00</td>
+                </tr>
+                <tr >
+                    <td>女职工保健计划</td>
+                    <td >实物  </td>
+                    <td>女性护理、进口食品、孕婴童用品、洗护用品</td>
+                    <td>可选</td>
+                    <td>1000.00</td>
+                    <td>0.00</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="lk-chart">
+            <div class="chart" style="width: 60%">
+                <div id="main1" style="height:300px;"></div>
+            </div>
+            <!--<div class="chart">
+                <div id="main2" style="height:400px;"></div>
+            </div>-->
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+<script>
+    let main1 = echarts.init(document.getElementById('main1'));
+    let option = {
+        color:['#666666'],
+        title: {
+            text: '近6天访问人数'
+        },
+        tooltip: {},
+        legend: {
+            data:['访问数量']
+        },
+        xAxis: {
+            data: ["11-23","11-24","11-25","11-26","11-27","11-28"]
+        },
+        yAxis: {},
+        series: [{
+            name: '人数',
+            type: 'bar',
+            data: [45, 10, 26, 29, 23, 33]
+        }]
+    };
+    main1.setOption(option);
+</script>
+{% endblock %}

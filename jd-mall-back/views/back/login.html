@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>积点商城-后台管理系统</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="node_modules/nprogress/nprogress.css">
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+        body{
+            background: url("./uploads/background.jpg") no-repeat;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <!-- 登录 -->
+    <div class="login">
+        <div class="login-wrap">
+            <div class="avatar">
+                <img src="/back/images/smile.ico" class="img-circle" alt="">
+            </div>
+            <form id="login_form" action="/cms/api/admin/login" method="post" class="col-md-offset-1 col-md-10">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon">
+                        <i class="fa fa-id-card-o"></i>
+                    </span>
+                    <label for="user_name"></label>
+                    <input id="user_name" name="user_name" type="text" class="form-control" placeholder="用户名">
+                </div>
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon">
+                        <i class="fa fa-key"></i>
+                    </span>
+                    <label for="user_pwd"></label>
+                    <input id="user_pwd" name="user_pwd" type="password" class="form-control" placeholder="密码">
+                </div>
+                <input type="submit" value="登录" class="btn btn-lg btn-danger btn-block">
+            </form>
+        </div>
+    </div>
+
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="js/tool.js"></script>
+    <script src="js/md5.js"></script>
+    <script>
+        $(function () {
+            $('#login_form').submit(function () {
+                // 1. 获取用户名和密码
+                let user_name = $('#user_name').val().trim();
+                let user_pwd = $('#user_pwd').val().trim();
+                // 2. 前端校验
+                if(!user_name){
+                    alert('请输入用户名!');
+                    return false;
+                }
+
+                if(!user_pwd){
+                    alert('请输入密码!');
+                    return false;
+                }
+                // 3. 对密码进行加密
+                // user_pwd = md5(user_pwd, KEY);
+
+                // 4. 发起ajax请求
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: $(this).attr('method'),
+                    data: `user_name=${user_name}&user_pwd=${user_pwd}`,
+                    success: function (result) {
+                        if(result.status === 1){ // 成功
+                            // 持久化数据到本地
+                            localStorage.setItem('yq_token', result.token);
+                            // 跳转到主界面
+                            window.location.href = '/back';
+                        }else { //失败
+                            alert(result.msg);
+                            // 清空输入框
+                            $('#user_name').val('');
+                            $('#user_pwd').val('');
+                        }
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+</body>
+</html>

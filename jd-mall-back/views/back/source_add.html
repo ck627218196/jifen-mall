@@ -1,0 +1,195 @@
+{% extends "back/base.html" %}
+
+{% block style %}
+    <link rel="stylesheet" href="js/wangEditor/wangEditor.css">
+    <style>
+    .preview {
+        width: 480px;
+        height: 270px;
+        padding: 0;
+        margin-left: 15px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .preview:hover .cover {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .preview:hover .fa-upload {
+        color: rgba(240, 240, 240, 0.8);
+    }
+
+    #upfile {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 9;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }
+
+    .cover {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        line-height: 270px;
+        font-size: 40px;
+        background-color: rgba(0, 0, 0, 0);
+        transition: all 0.3s;
+    }
+
+    .fa-upload {
+        color: rgba(240, 240, 240, 0);
+    }
+</style>
+{% endblock%}
+
+{% block content %}
+    <div class="container-fluid">
+    <div class="body advert">
+        <!-- 面包屑 -->
+        <ol class="breadcrumb">
+            <li><a href="/back/source_list">商品列表</a></li>
+            <li class="active">添加商品</li>
+        </ol>
+        <div class="advert-add">
+            <form id="source_form" action="/cms/api/auth/source/add" method="post" class="form-horizontal" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="goods_title" class="col-md-3 control-label">商品标题</label>
+                    <div class="col-md-5">
+                        <input id="goods_title" name="goods_title" type="text" class="form-control input-sm" placeholder="请填写商品标题" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="goods_class" class="col-md-3 control-label">分类</label>
+                    <div class="col-md-5">
+                        <input id="goods_class" name="goods_class" type="text" class="form-control input-sm" placeholder="请填写分类" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">封面图片</label>
+                    <div class="col-md-2 preview">
+                        <img id="image_url" src="uploads/course.jpg" style="border: 1px solid #e0e0e0;">
+                        <input type="file" id="upfile" name="source_img">
+                        <div class="cover">
+                            <i class="fa fa-upload"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="goods_price" class="col-md-3 control-label">价格</label>
+                    <div class="col-md-5">
+                        <input id="goods_price" name="goods_price" type="number" class="form-control input-sm" placeholder="填写价格" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="goods_num" class="col-md-3 control-label">库存</label>
+                    <div class="col-md-5">
+                        <input id="goods_num" name="goods_num" type="number" class="form-control input-sm" placeholder="填写库存" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-md-3 control-label">商品详情</label>
+                    <div class="col-md-8" id="editor"></div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <input type="submit" class="btn btn-danger btn-sm pull-right" value="添加商品">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="js/wangEditor/wangEditor.js"></script>
+<script>
+    $(function () {
+        // 1. 生成一个富文本编辑器
+        let E = window.wangEditor;
+        let editor = new E('#editor');
+        editor.customConfig.customUploadImg = function (files, insert) {
+            // 2. 获取文件
+            let imgFile = files[0];
+            // 3. 上传图片
+            if(files.length > 0){
+                // 4. 生成formData对象
+                let formData = new FormData();
+                formData.append('upload_img', imgFile);
+
+                $.ajax({
+                    url:  '/cms/api/auth/source/upload_img',
+                    type: 'post',
+                    processData: false, // 不要处理转化成一个查询字符串
+                    contentType: false,
+                    data: formData,
+                    success: function (result) {
+                        if(result.status === 1){
+                            insert(result.data);
+                        }else {
+                            alert('插入图片失败!');
+                        }
+                    }
+                });
+            }
+        };
+        editor.create();
+
+        // 2. 处理图片的本地展示
+        $('#upfile').on('change', function () {
+            // 1.1 取出本地的文件
+            let imgFile = this.files[0];
+            // 1.2 文件阅读对象
+            let fileReader = new FileReader();
+            fileReader.readAsDataURL(imgFile);
+            // 1.3 文件读取完毕
+            fileReader.onloadend = function () {
+                $('#image_url').attr('src', this.result);
+            }
+        });
+
+        // 3. 发起ajax请求
+        $('#source_form').submit(function () {
+            // 2.1 创建FormData对象
+            let formData = new FormData(this);
+
+            // 2.2 容错验证
+            if(formData.get('source_img').size === 0){
+                alert('请上传图片!');
+                return false;
+            }
+
+            // 2.3 取出文章内容
+            formData.append('source_content', editor.txt.html());
+            console.log(formData);
+            // 2.3 发起请求
+            $.ajax({
+                url:  $(this).attr('action'),
+                type: $(this).attr('method'),
+                processData: false, // 不要处理转化成一个查询字符串
+                contentType: false,
+                data: formData,
+                success: function (result) {
+                    if(result.status === 1){
+                        alert('添加商品成功!');
+                        // 返回上一级界面
+                        window.location.href = '/back/source_list';
+                    }else {
+                        console.log(result);
+                        alert('添加商品失败!');
+                    }
+                }
+            });
+            // 阻止默认提交
+            return false;
+        });
+    })
+</script>
+{% endblock %}

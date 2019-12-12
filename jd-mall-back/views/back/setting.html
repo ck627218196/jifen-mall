@@ -1,0 +1,169 @@
+{% extends "back/base.html" %}
+
+{% block content %}
+    <div class="container-fluid">
+    <!-- 管理员资料 -->
+    <div class="body teacher-profile">
+        <div class="settings">
+            <form id="user_form" action="/cms/api/auth/user/edit_user" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <div class="form-group">
+                    <label for="" class="col-md-3 control-label">用户名</label>
+                    <div class="col-md-5">
+                        <p class="form-control-static">{{userData.user_name}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-md-3 control-label">头像</label>
+                    <div class="col-md-2 preview">
+                        {% if userData.user_icon %}
+                           <img data-user-image="{{userData.user_icon}}" class="image_url" src="/upload/image/{{userData.user_icon}}" style="border: 1px solid #e0e0e0;">
+                        {% else %}
+                           <img data-user-image="{{userData.user_icon}}" class="image_url" src="./images/default.png" style="border: 1px solid #e0e0e0;">
+                        {% endif %}
+                        <input name="user_icon" type="file" id="upfile">
+                        <div class="cover">
+                            <i class="fa fa-upload"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-md-3 control-label">性别</label>
+                    <div class="col-md-3">
+                        {% if userData.user_sex %}
+                            <label class="radio-inline">
+                                {% if userData.user_sex === '男' %}
+                                   <input name="user_sex" value="男" type="radio" checked> 男
+                                {% else %}
+                                   <input name="user_sex" value="男"  type="radio"> 男
+                                {% endif %}
+                            </label>
+                            <label class="radio-inline">
+                                {% if userData.user_sex === '女' %}
+                                <input name="user_sex" value="女"  type="radio" checked> 女
+                                {% else %}
+                                <input name="user_sex" value="女"  type="radio"> 女
+                                {% endif %}
+                            </label>
+                        {% else %}
+                            <label class="radio-inline">
+                                <input name="user_sex" value="男" type="radio" checked> 男
+                            </label>
+                            <label class="radio-inline">
+                                <input name="user_sex" value="女"  type="radio"> 女
+                            </label>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="real_name" class="col-md-3 control-label">姓名</label>
+                    <div class="col-md-5">
+                        <input id="real_name" name="real_name" value="{{userData.real_name}}" type="text" class="form-control input-sm">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="user_position" class="col-md-3 control-label">职位</label>
+                    <div class="col-md-5">
+                        <input id="user_position" name="user_position" type="text" value="{{userData.user_position}}" class="form-control input-sm">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="user_phone" class="col-md-3 control-label">手机号码</label>
+                    <div class="col-md-5">
+                        <input id="user_phone" name="user_phone"  value="{{userData.user_phone}}"  type="text" class="form-control input-sm">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="user_email" class="col-md-3 control-label">Email</label>
+                    <div class="col-md-5">
+                        <input id="user_email" name="user_email"  value="{{userData.user_email}}"  type="text" class="form-control input-sm">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="user_birth" class="col-md-3 control-label">出生日期</label>
+                    <div class="col-md-5">
+                        <input id="user_birth" name="user_birth"  value="{{userData.user_birth}}" type="date" class="form-control input-sm">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="user_intro" class="col-md-3 control-label">自我介绍</label>
+                    <div class="col-md-5 ckeditor">
+                        <textarea id="user_intro" name="user_intro" rows="15" class="form-control input-sm">{{userData.user_intro}}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <input type="submit" class="btn btn-danger pull-right" value="保存">
+                        <a href="/back/reset_pwd" class="btn btn-link btn-success pull-right">修改密码？</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock%}
+
+{% block script %}
+   <script>
+       $(function () {
+           // 1. 处理图片的本地展示
+           $('#upfile').on('change', function () {
+               // 1.1 取出本地的文件
+               let imgFile = this.files[0];
+               // 1.2 文件阅读对象
+               let fileReader = new FileReader();
+               fileReader.readAsDataURL(imgFile);
+               // 1.3 文件读取完毕
+               fileReader.onloadend = function () {
+                   $('.image_url').attr('src', this.result);
+               }
+           });
+
+           // 2. 发起POST请求
+           $('#user_form').submit(function () {
+               // 2.1 创建FormData对象
+               let formData = new FormData(this);
+
+               // 2.2 容错验证
+               if(formData.get('user_icon').size === 0){
+                   let user_icon = $('.image_url').data('user-image');
+                   formData.set('user_icon', user_icon);
+               }
+
+               // 验证手机号码是否合法
+               const phone = $('#user_phone').val();
+               if(!/^[1][3,4,5,6,7,8,9][0-9]{9}$/.test(phone)){
+                   alert('输入手机号码不正确!');
+                   return false;
+               }
+
+               // 验证邮箱是否合法
+               const email = $('#user_email').val();
+               if(!/^[a-z0-9]{1}[a-z0-9_-]{1,}@[a-z0-9]{1,}(\.[a-z]{2,})*\.[a-z]{2,}$/.test(email)){
+                   alert('输入邮箱不正确!');
+                   return false;
+               }
+
+               // 2.3 发起请求
+               $.ajax({
+                   url:  $(this).attr('action'),
+                   type: $(this).attr('method'),
+                   processData: false, // 不要处理转化成一个查询字符串
+                   contentType: false,
+                   data: formData,
+                   success: function (result) {
+                       if(result.status === 1){
+                           alert('修改管理员信息成功!');
+                           // 返回上一级界面
+                           window.location.href = '/back';
+                       }else {
+                           alert('修改管理员信息失败!');
+                       }
+                   }
+               });
+               // 阻止默认提交
+               return false;
+           });
+
+       });
+   </script>
+{% endblock%}

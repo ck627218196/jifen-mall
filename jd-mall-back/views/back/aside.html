@@ -1,0 +1,158 @@
+<!-- 侧边栏 -->
+<div class="aside">
+    <!-- 个人资料 -->
+    <div id="user_info" class="profile">
+        <div class="avatar img-circle">
+            <img src="/back/images/favicon.ico" alt="">
+        </div>
+        <h4>admin</h4>
+    </div>
+    <!-- 导航菜单 -->
+    <div class="navs" id="aside_navs">
+        <ul class="list-unstyled">
+            <li class="nav_one">
+                <a href="/back" >
+                    <i class="fa fa-area-chart"></i>
+                    首页
+                </a>
+            </li>
+            <li  class="nav_two" >
+                <a href="javascript:;">
+                    <i class="fa fa-object-group"></i>
+                    商品库
+                    <i class="arrow fa fa-angle-right"></i>
+                </a>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="/back/sowing_list">
+                            轮播图管理
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/back/source_list">
+                            商品管理
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav_three">
+                <a href="/back/order_list">
+                    <i class="fa fa-cart-arrow-down"></i>
+                    订单中心
+                </a>
+            </li>
+            <li class="nav_four">
+                <a href="/back/user">
+                    <i class="fa fa-users"></i>
+                    用户中心
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+{% block script %}
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script>
+    $(function () {
+        // 1. 处理左侧的选中
+        dealLeftSelected();
+
+        // 2. 获取管理员的部分信息
+        getUserSomeInfo()
+    });
+
+    function dealLeftSelected() {
+        // 1. 获取路由
+        let pathname = location.pathname;
+
+        console.log(pathname);
+
+        // 2. 先让所有的li标签都不选中
+        $('#aside_navs li').removeClass('active');
+
+        // 3. 分情况判断
+        // 3.1 情况1
+        if(
+            pathname === '/back/' ||
+            pathname === '/back/setting'||
+            pathname === '/back/reset_pwd'
+        ){
+            $('.nav_one').addClass('active');
+        }
+        // 3.1 情况2
+        if(
+            pathname === '/back/source_list'||
+            pathname === '/back/sowing_list' ||
+            pathname === '/back/sowing_add' ||
+            pathname === '/back/sowing_edit' ||
+            pathname === '/back/source_add'
+        ){
+            $('.nav_two>ul').css('display', 'block');
+        }else {
+            $('.nav_two>ul').css('display', 'none');
+        }
+
+        if(
+            pathname === '/back/sowing_list' ||
+            pathname === '/back/sowing_add' ||
+            pathname === '/back/sowing_edit'
+        ){
+            $('.nav_two>ul li').eq(0).addClass('active');
+        }
+
+        if(
+            pathname === '/back/source_list'||
+            pathname === '/back/source_add'
+        ){
+            $('.nav_two>ul li').eq(1).addClass('active');
+        }
+
+        // 3.2 情况3
+        if(pathname === '/back/order_list'){
+            $('.nav_three').addClass('active');
+        }
+        //3.3情况4
+        if(pathname === '/back/user'){
+            $('.nav_four').addClass('active');
+        }
+    }
+
+    // function getUserSomeInfo() {
+    //      $.ajax({
+    //          url: '/cms/api/auth/user/user_some_info',
+    //          success: function (result) {
+    //              let tpl;
+    //              if(result.status === 1){
+    //                  // console.log(result.data);
+    //                 if(result.data.user_icon){
+    //                     tpl = `
+    //                  <div class="avatar img-circle">
+    //                     <img src="/upload/image/${result.data.user_icon}" alt="">
+    //                 </div>
+    //                 <h4>${result.data.real_name ? result.data.real_name : '引擎管理员'}</h4>
+    //                  `;
+    //                 }else {
+    //                     tpl = `
+    //                 <div class="avatar img-circle">
+    //                     <img src="./uploads/avatar.png" alt="">
+    //                 </div>
+    //                 <h4>引擎管理员</h4>
+    //                  `;
+    //                 }
+    //              }else {
+    //                  tpl = `
+    //                 <div class="avatar img-circle">
+    //                     <img src="./uploads/avatar.png" alt="">
+    //                 </div>
+    //                 <h4>引擎管理员</h4>
+    //                  `;
+    //              }
+    //              $('#user_info').html(tpl);
+    //          }
+    //      })
+    // }
+</script>
+{% endblock %}
+
+

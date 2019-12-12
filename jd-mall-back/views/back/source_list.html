@@ -1,0 +1,143 @@
+{% extends "back/base.html" %}
+
+{% block content %}
+    <div class="container-fluid">
+    <!-- 客户列表 -->
+    <div class="body course-list">
+        <!-- 面包屑 -->
+        <ol class="breadcrumb">
+            <li><a href="javascript:;">商品管理</a></li>
+            <li class="active">商品列表</li>
+        </ol>
+        <div class="page-title">
+            <a href="/back/source_add" class="btn btn-danger btn-sm pull-right">添加商品</a>
+        </div>
+        <div id="courses" class="courses">
+
+        </div>
+        <!-- 分页 -->
+        <ul id="source_pagination" class="pagination pull-right">
+           <!-- <li><a href="#">上一页</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">下一页</a></li>-->
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="js/jquery.twbsPagination.js"></script>
+<script>
+    $(function () {
+         // 0. 显示商品的数据
+         let pageSize = 10;
+         // 1. 获取商品的总数
+        $.ajax({
+            url: '/cms/api/auth/source/count',
+            success: function (result) {
+                // console.log(result);
+                if(result.status === 1){
+                    // 2.判断是否有商品
+                    if(result.data.count && result.data.count > 0){
+                         $('#source_pagination').twbsPagination({
+                             totalPages: Math.ceil(result.data.count / pageSize),
+                             first: '首页',
+                             prev: '上一页',
+                             next: '下一页',
+                             last: '尾页',
+                             onPageClick: function (event, page) {
+                                 console.log(page);
+                                 // 加载数据
+                                 loadData(page);
+                             }
+                         });
+                    }else {
+                        let tpl =
+                            `
+                         <div style="text-align: center">
+                             <h4>当前没有商品, 赶紧去添加吧!</h4>
+                         </div>
+                        `;
+                        $('#courses').html(tpl);
+                    }
+                }
+            }
+        });
+
+        // 2. 加载页面的数据
+        function loadData(page) {
+           $.ajax({
+               url: '/cms/api/auth/source/list_page',
+               data: `page=${page}&pageSize=${pageSize}`,
+               success: function (result) {
+                   if(result.status === 1){
+                       // console.log(result.data);
+                       let tpl = '';
+                       $(result.data).each((index, value)=>{
+                           tpl +=
+                               `
+                                <div class="course">
+                                <div class="pic" style="width: 150px;height: 150px;margin-left: 50px;">
+                                    <img src="${value.source_img}" alt="" >
+                                </div>
+                                <div class="info">
+                                    <a href="javascript:;">${value.goods_title}</a>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <strong>价格：￥${value.goods_price}</strong>
+                                            <span>&nbsp;&nbsp;&nbsp;&nbsp;类别：${value.goods_class}</span>
+                                        </li>
+                                        <li>
+                                            <span>库存:</span>
+                                            <span>${value.goods_num}</span>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="pull-right">
+                                    <a data-id="${value.id}"  href="javascript:;" class="btn btn-primary btn-xs article_edit">编辑</a>
+                                    <a data-id="${value.id}"  href="javascript:;" class="btn btn-danger btn-xs article_del">删除</a>
+                                </div>
+                            </div>
+                               `
+                       });
+                       $('#courses').html(tpl);
+
+                       // 3. 删除一个商品
+                       $('.article_del').click(function () {
+                           let id = $(this).data('id');
+                           $.ajax({
+                               url: '/cms/api/auth/source/del/' + id,
+                               success: function (msg) {
+                                   if(msg.status === 1){
+                                       alert('删除商品成功!');
+                                       // 刷新页面
+                                       window.location.reload();
+                                   }else {
+                                       alert('删除商品失败!');
+                                   }
+                               }
+                           });
+                       });
+
+                       // 4. 编辑一篇文章
+                       $('.article_edit').click(function () {
+                           let id = $(this).data('id');
+                           // 实现页面的跳转
+                           window.location.href = '/back/source_edit?id='+ id;
+                       });
+                   }else {
+                       alert('获取文章失败!');
+                   }
+               }
+           })
+        }
+    });
+</script>
+{% endblock %}
+
+

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>积点商城-后台管理系统</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="node_modules/nprogress/nprogress.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <!-- 管理系统头部 -->
+    <div class="header">
+        <nav class="navbar navbar-custom">
+            <div class="navbar-header">
+                <a href="javascript:;" class="navbar-brand">积点商城-后台管理系统</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li style="display: flex">
+                    <a href="/back/docent_list"><i class="fa fa-users"></i><strong>管理员信息</strong></a>
+                    <a href="javascript:;" class="logout"><i class="fa fa-sign-out"></i><strong>退出</strong></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <!-- 主体 -->
+    <div class="main">
+        <!-- 侧边栏 -->
+        <div class="aside">
+            <!-- 个人资料 -->
+            <div class="profile">
+                <!-- 头像 -->
+                <div class="avatar img-circle">
+                    <img src="./uploads/avatar.png" alt="">
+                </div>
+                <h4>管理员</h4>
+            </div>
+            <!-- 导航菜单 -->
+            <div class="navs">
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="/back" class="active">
+                            <i class="fa fa-area-chart"></i>
+                            首页
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <i class="fa fa-object-group"></i>
+                            商品库
+                            <i class="arrow fa fa-angle-right"></i>
+                        </a>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="/back/sowing_list">
+                                    轮播图管理
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/back/course_list">
+                                    商品管理
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/back/order_list">
+                            <i class="fa fa-users"></i>
+                            订单中心
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/back/user">
+                            <i class="fa fa-cog"></i>
+                            用户中心
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <!-- 管理员列表 -->
+            <div class="body teacher-list">
+                <!-- 面包屑 -->
+                <ol class="breadcrumb">
+                    <li><a href="/back">首页</a></li>
+                    <li class="active">管理员列表</li>
+                </ol>
+                <div class="page-title">
+                    <a href="/back/docent_add" class="btn btn-danger btn-sm pull-right">添加管理员</a>
+                </div>
+                <div class="panel panel-default">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>编号</th>
+                                <th>姓名</th>
+                                <th>用户名</th>
+                                <th>年龄</th>
+                                <th>性别</th>
+                                <th>手机号码</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>叶建华</td>
+                                <td>yq001</td>
+                                <td>28</td>
+                                <td>男</td>
+                                <td>18917286702</td>
+                                <td>
+                                    <a href="#docentModal" data-toggle="modal" class="btn btn-info btn-xs">查 看</a>
+                                    <a href="/back/docent_add" class="btn btn-info btn-xs">编 辑</a>
+                                    <a href="javascript:;" class="btn btn-warning btn-xs">注 销</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 模态框 添加课程 -->
+    <div class="modal fade" id="docentModal">
+        <div class="modal-dialog" style="width: 750px;">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="panel-title">管理员信息</h4>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-bordered table-condensed">
+                        <tbody>
+                            <tr>
+                                <th>姓名:</th><td>叶建华</td>
+                                <th>职位:</th><td colspan="3">讲师</td>
+                                <td rowspan="4" width="128">
+                                    <div class="avatar">
+                                        <img src="./images/default.png" alt="">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>用户名:</th><td  colspan="4">旋之华</td>
+                            </tr>
+                            <tr>
+                                <th>性别:</th><td>男</td>
+                                <th>出生日期:</th><td colspan="3">2020-01-11</td>
+                            </tr>
+                            <tr>
+                                <th>手机号码:</th><td colspan="2">18917286702</td>
+                                <th>邮箱:</th><td colspan="2">yjh@itlike.com</td>
+                            </tr>
+                            <tr>
+                                <th colspan="7">管理员介绍:</th>
+                            </tr>
+                            <tr>
+                                <td colspan="7">
+                                    <div class="introduce">
+                                        <p>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</p>
+                                        <p>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</p>
+                                        <p>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</p>
+                                        <p>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="node_modules/nprogress/nprogress.js"></script>
+    <script src="js/base.js"></script>
+</body>
+</html>

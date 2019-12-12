@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>引擎-通用型后台管理系统</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="node_modules/nprogress/nprogress.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <!-- 管理系统头部 -->
+    <div class="header">
+        <nav class="navbar navbar-custom">
+            <div class="navbar-header">
+                <a href="javascript:;" class="navbar-brand">引擎计划-通用型后台管理系统</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="javascript:;"><i class="fa fa-sign-out"></i>退出</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- 主体 -->
+    <div class="main">
+        <!-- 侧边栏 -->
+        <div class="aside">
+            <!-- 个人资料 -->
+            <div class="profile">
+                <!-- 头像 -->
+                <div class="avatar img-circle">
+                    <img src="./uploads/avatar.png" alt="">
+                </div>
+                <h4>旋之华</h4>
+            </div>
+            <!-- 导航菜单 -->
+            <div class="navs">
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="/back" class="active">
+                            <i class="fa fa-area-chart"></i>
+                            首页
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <i class="fa fa-object-group"></i>
+                            幼教资源
+                            <i class="arrow fa fa-angle-right"></i>
+                        </a>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="./sowing_list.html">
+                                    轮播图列表
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./course_list.html">
+                                    资源列表
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./course_list.html">
+                                    热门标签
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="order_list.html">
+                            <i class="fa fa-users"></i>
+                            管理员列表
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <i class="fa fa-cog"></i>
+                            设置中心
+                            <i class="arrow fa fa-angle-right"></i>
+                        </a>
+                        <ul class="list-unstyled">
+                            <li><a href="javascript:;">站点设置</a></li>
+                            <li><a href="javascript:;">运营设置</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="body teacher">
+                <!-- 面包屑 -->
+                <ol class="breadcrumb">
+                    <li><a href="/back/docent_list">管理员列表</a></li>
+                    <li class="active">添加管理员</li>
+                </ol>
+                <div class="teacher-add">
+                    <form action="" class="form-horizontal col-md-offset-2">
+                        <div class="form-group">
+                            <label for="" class="col-md-3 control-label">用户名</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control input-sm" placeholder="用户名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-md-3 control-label">密码</label>
+                            <div class="col-md-4">
+                                <input type="password" class="form-control input-sm">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-7">
+                                <a href="docent_list.html" class="btn btn-danger btn-sm pull-right"> 添 加 </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="node_modules/nprogress/nprogress.js"></script>
+    <script src="js/base.js"></script>
+</body>
+</html>
